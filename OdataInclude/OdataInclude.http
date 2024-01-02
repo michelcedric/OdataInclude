@@ -1,0 +1,19 @@
+@OdataInclude_HostAddress = http://localhost:5111
+
+# @name books
+GET {{OdataInclude_HostAddress}}/odata/books/
+Accept: application/json
+###
+
+@bookId = {{books.response.body.value[0].Id}}
+GET {{OdataInclude_HostAddress}}/odata/Books({{bookId}})?$expand=MainAuthor
+Accept: application/json
+###
+
+GET {{OdataInclude_HostAddress}}/odata/V2/Books({{bookId}})?$expand=MainAuthor
+Accept: application/json
+###
+
+GET {{OdataInclude_HostAddress}}/odata/V2/Books(ef514885-eae6-467a-9878-9724f4a6b42b)?$expand=MainAuthor
+Accept: application/json
+###
